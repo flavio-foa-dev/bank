@@ -1,9 +1,9 @@
 let balance = 5000;
 
-const elementBalance = document.querySelector(".saldo-valor .valor")
-elementBalance.innerHTML = balance
+const elementBalance = document.querySelector(".saldo-valor .valor") as HTMLElement;
+elementBalance.innerHTML = balance.toString()
 
-const elementForm = document.querySelector(".block-nova-transacao form")
+const elementForm = document.querySelector(".block-nova-transacao form") as HTMLFormElement
 elementForm.addEventListener("submit", (event) => {
   event.preventDefault()
   if(!elementForm.checkValidity()){
@@ -11,9 +11,9 @@ elementForm.addEventListener("submit", (event) => {
     return
   }
 
-  const inputTipoTransacao = elementForm.querySelector("#tipoTransacao").value;
-  const inputValor = elementForm.querySelector("#valor").value;
-  const inputData = elementForm.querySelector("#data").value;
+  const inputTipoTransacao: string = (elementForm.querySelector("#tipoTransacao") as HTMLSelectElement).value ;
+  const inputValor: number = +(elementForm.querySelector("#valor") as HTMLSelectElement).value;
+  const inputData: Date = new Date((elementForm.querySelector("#data") as HTMLSelectElement).value);
 
   if (inputTipoTransacao == "Deposito") {
     balance += Number(inputValor);
@@ -24,7 +24,7 @@ elementForm.addEventListener("submit", (event) => {
     return;
   }
 
-  elementBalance.innerHTML = balance
+  elementBalance.innerHTML = balance.toString()
 
   const novaTransacao = {
     tipoTransacao: inputTipoTransacao,
