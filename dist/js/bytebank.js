@@ -1,6 +1,3 @@
-let balance = 5000;
-const elementBalance = document.querySelector(".saldo-valor .valor");
-elementBalance.innerHTML = balance.toString();
 const elementForm = document.querySelector(".block-nova-transacao form");
 elementForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -8,24 +5,24 @@ elementForm.addEventListener("submit", (event) => {
         alert("Please complete all fields");
         return;
     }
-    const inputTipoTransacao = elementForm.querySelector("#tipoTransacao").value;
+    const inputTipoTransacao = (elementForm.querySelector("#tipoTransacao").value);
     const inputValor = +elementForm.querySelector("#valor").value;
     const inputData = new Date(elementForm.querySelector("#data").value);
-    if (inputTipoTransacao == "Deposito") {
+    if (inputTipoTransacao == TypeOpetation.DEPOSITO) {
         balance += Number(inputValor);
     }
-    else if (inputTipoTransacao == "Transferencia" || inputTipoTransacao == "Pagamento de Boleto") {
+    else if (inputTipoTransacao == TypeOpetation.TRANSFERENCIA || inputTipoTransacao == TypeOpetation.PAGAMENTO_BOLETO) {
         balance -= Number(inputValor);
     }
     else {
         alert("Tipo de Transação é inválido!");
         return;
     }
-    elementBalance.innerHTML = balance.toString();
+    elementBalance.innerHTML = balance.toLocaleString("pt-br", { currency: "BRL", style: "currency" });
     const novaTransacao = {
-        tipoTransacao: inputTipoTransacao,
-        valor: inputValor,
-        data: inputData
+        type: inputTipoTransacao,
+        value: inputValor,
+        date: inputData
     };
     console.log(novaTransacao);
     console.log(balance);

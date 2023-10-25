@@ -1,7 +1,6 @@
-let balance = 5000;
 
-const elementBalance = document.querySelector(".saldo-valor .valor") as HTMLElement;
-elementBalance.innerHTML = balance.toString()
+
+
 
 const elementForm = document.querySelector(".block-nova-transacao form") as HTMLFormElement
 elementForm.addEventListener("submit", (event) => {
@@ -11,25 +10,25 @@ elementForm.addEventListener("submit", (event) => {
     return
   }
 
-  const inputTipoTransacao: string = (elementForm.querySelector("#tipoTransacao") as HTMLSelectElement).value ;
+  const inputTipoTransacao: TypeOpetation = ((elementForm.querySelector("#tipoTransacao") as HTMLSelectElement).value) as TypeOpetation ;
   const inputValor: number = +(elementForm.querySelector("#valor") as HTMLSelectElement).value;
   const inputData: Date = new Date((elementForm.querySelector("#data") as HTMLSelectElement).value);
 
-  if (inputTipoTransacao == "Deposito") {
+  if (inputTipoTransacao == TypeOpetation.DEPOSITO) {
     balance += Number(inputValor);
-  } else if (inputTipoTransacao == "Transferencia" || inputTipoTransacao == "Pagamento de Boleto") {
+  } else if (inputTipoTransacao == TypeOpetation.TRANSFERENCIA|| inputTipoTransacao == TypeOpetation.PAGAMENTO_BOLETO) {
     balance -= Number(inputValor);
   } else {
     alert("Tipo de Transação é inválido!");
     return;
   }
 
-  elementBalance.innerHTML = balance.toString()
+  elementBalance.innerHTML = balance.toLocaleString("pt-br", {currency: "BRL", style: "currency"})
 
-  const novaTransacao = {
-    tipoTransacao: inputTipoTransacao,
-    valor: inputValor,
-    data: inputData
+  const novaTransacao: TrasectionType = {
+    type: inputTipoTransacao,
+    value: inputValor,
+    date: inputData
   }
 
   console.log(novaTransacao);
