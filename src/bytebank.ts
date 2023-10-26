@@ -23,7 +23,7 @@ elementForm.addEventListener("submit", (event) => {
     return;
   }
 
-  elementBalance.innerHTML = balance.toLocaleString("pt-br", {currency: "BRL", style: "currency"})
+  elementBalance.innerHTML = formatcurrencies(balance)
 
   const novaTransacao: TrasectionType = {
     type: inputTipoTransacao,
