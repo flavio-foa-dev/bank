@@ -1,4 +1,5 @@
-import { TrasectionType, TypeOpetation } from "../types/Trasaction-type"
+
+import { TrasectionType, TypeOpetation } from "../types/Trasaction-type.js"
 
 export default class Account {
   private balance: number = 5000
@@ -20,7 +21,8 @@ export default class Account {
       alert("Tipo de Transação é inválido!");
       return;
     }
+    console.log(this.balance, "novo valor")
     console.log(transaction)
-
   }
 }
+

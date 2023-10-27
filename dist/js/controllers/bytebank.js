@@ -1,4 +1,4 @@
-import { getBalance, updateBalance } from "../services/account.js";
+import { saveTransaction } from "../services/transaction.js";
 const elementForm = document.querySelector(".block-nova-transacao form");
 elementForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -9,14 +9,11 @@ elementForm.addEventListener("submit", (event) => {
     const inputTipoTransacao = (elementForm.querySelector("#tipoTransacao").value);
     const inputValor = +elementForm.querySelector("#valor").value;
     const inputData = new Date(elementForm.querySelector("#data").value);
-    let balance = getBalance();
-    updateBalance(balance);
     const novaTransacao = {
         type: inputTipoTransacao,
         value: inputValor,
         date: inputData
     };
-    console.log(novaTransacao);
-    console.log(balance);
+    saveTransaction(novaTransacao);
     elementForm.reset();
 });

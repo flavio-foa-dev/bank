@@ -1,4 +1,4 @@
-import { getBalance, updateBalance } from "../services/account.js"
+import { saveTransaction } from "../services/transaction.js"
 import { TrasectionType, TypeOpetation } from "../types/Trasaction-type.js"
 
 const elementForm = document.querySelector(".block-nova-transacao form") as HTMLFormElement
@@ -12,11 +12,6 @@ elementForm.addEventListener("submit", (event) => {
   const inputTipoTransacao: TypeOpetation = ((elementForm.querySelector("#tipoTransacao") as HTMLSelectElement).value) as TypeOpetation ;
   const inputValor: number = +(elementForm.querySelector("#valor") as HTMLSelectElement).value;
   const inputData: Date = new Date((elementForm.querySelector("#data") as HTMLSelectElement).value);
-  let balance: number = getBalance()
-
-  updateBalance(balance)
-
-
 
   const novaTransacao: TrasectionType = {
     type: inputTipoTransacao,
@@ -24,7 +19,7 @@ elementForm.addEventListener("submit", (event) => {
     date: inputData
   }
 
-  console.log(novaTransacao);
-  console.log(balance)
+  saveTransaction(novaTransacao)
   elementForm.reset();
 })
+
