@@ -1,6 +1,5 @@
-
-
-
+import { getBalance, updateBalance } from "../services/account.js"
+import { TrasectionType, TypeOpetation } from "../types/Trasaction-type.js"
 
 const elementForm = document.querySelector(".block-nova-transacao form") as HTMLFormElement
 elementForm.addEventListener("submit", (event) => {
@@ -13,17 +12,11 @@ elementForm.addEventListener("submit", (event) => {
   const inputTipoTransacao: TypeOpetation = ((elementForm.querySelector("#tipoTransacao") as HTMLSelectElement).value) as TypeOpetation ;
   const inputValor: number = +(elementForm.querySelector("#valor") as HTMLSelectElement).value;
   const inputData: Date = new Date((elementForm.querySelector("#data") as HTMLSelectElement).value);
+  let balance: number = getBalance()
 
-  if (inputTipoTransacao == TypeOpetation.DEPOSITO) {
-    balance += Number(inputValor);
-  } else if (inputTipoTransacao == TypeOpetation.TRANSFERENCIA|| inputTipoTransacao == TypeOpetation.PAGAMENTO_BOLETO) {
-    balance -= Number(inputValor);
-  } else {
-    alert("Tipo de Transação é inválido!");
-    return;
-  }
+  updateBalance(balance)
 
-  elementBalance.innerHTML = formatcurrencies(balance)
+
 
   const novaTransacao: TrasectionType = {
     type: inputTipoTransacao,

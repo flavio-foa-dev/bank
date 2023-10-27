@@ -1,13 +1,13 @@
-var FormatterDate;
+export var FormatterDate;
 (function (FormatterDate) {
     FormatterDate["PADRAO"] = "DD/MM/YYYY";
     FormatterDate["DAY_WEEK_DAY_MES_YEAR"] = "DAY_WEEK, DD/MM/YYYY";
     FormatterDate["DAY_MES"] = "DD/MM";
 })(FormatterDate || (FormatterDate = {}));
-const formatcurrencies = (value) => {
+export const formatcurrencies = (value) => {
     return value.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
 };
-const formatDate = (value, format = FormatterDate.PADRAO) => {
+export const formatDate = (value, format = FormatterDate.PADRAO) => {
     if (format === FormatterDate.DAY_WEEK_DAY_MES_YEAR) {
         return value.toLocaleDateString("pt-br", {
             weekday: "long",

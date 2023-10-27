@@ -1,4 +1,4 @@
-var TypeOpetation;
+export var TypeOpetation;
 (function (TypeOpetation) {
     TypeOpetation["DEPOSITO"] = "Deposito";
     TypeOpetation["TRANSFERENCIA"] = "Transferencia";

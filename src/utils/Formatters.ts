@@ -1,10 +1,10 @@
-enum FormatterDate {
+export enum FormatterDate {
   PADRAO = "DD/MM/YYYY",
   DAY_WEEK_DAY_MES_YEAR = "DAY_WEEK, DD/MM/YYYY",
   DAY_MES = "DD/MM"
 }
 
-const formatcurrencies = (value: number): string => {
+export const formatcurrencies = (value: number): string => {
 
   return value.toLocaleString("pt-br", {style: "currency", currency:"BRL"})
 
@@ -12,7 +12,7 @@ const formatcurrencies = (value: number): string => {
 
 
 
-const formatDate = (value: Date, format: FormatterDate = FormatterDate.PADRAO): string => {
+export const formatDate = (value: Date, format: FormatterDate = FormatterDate.PADRAO): string => {
   if (format === FormatterDate.DAY_WEEK_DAY_MES_YEAR) {
     return value.toLocaleDateString("pt-br",
       {
