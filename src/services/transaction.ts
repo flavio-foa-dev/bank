@@ -10,10 +10,8 @@ if (elementDate) {
   elementDate.innerHTML = formatDate(account.getDateAccess(), FormatterDate.DAY_WEEK_DAY_MES_YEAR)
 }
 
-
 export const showBalance = (): void => {
   const saldo = account.getBalance()
-  console.log(saldo, "saldo atualizado")
   if(elementBalance !== null) {
     elementBalance.innerHTML = formatcurrencies(saldo)
   }

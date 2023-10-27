@@ -8,7 +8,6 @@ if (elementDate) {
 }
 export const showBalance = () => {
     const saldo = account.getBalance();
-    console.log(saldo, "saldo atualizado");
     if (elementBalance !== null) {
         elementBalance.innerHTML = formatcurrencies(saldo);
     }
