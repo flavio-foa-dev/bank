@@ -21,5 +21,7 @@ showBalance()
 export const saveTransaction = async(transaction: TrasectionType) => {
   console.log(transaction)
   account.createTransaction(transaction)
+  account.listGroupTransactions()
+
   showBalance()
 }
