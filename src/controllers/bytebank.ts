@@ -12,7 +12,7 @@ elementForm.addEventListener("submit", (event) => {
 
     const inputTipoTransacao: TypeOpetation = ((elementForm.querySelector("#tipoTransacao") as HTMLSelectElement).value) as TypeOpetation ;
     const inputValor: number = +(elementForm.querySelector("#valor") as HTMLSelectElement).value;
-    const inputData: Date = new Date((elementForm.querySelector("#data") as HTMLSelectElement).value);
+    const inputData: Date = new Date((elementForm.querySelector("#data") as HTMLSelectElement).value + " 00:00:00");
 
     const novaTransacao: TrasectionType = {
       type: inputTipoTransacao,
@@ -21,6 +21,7 @@ elementForm.addEventListener("submit", (event) => {
     }
 
     saveTransaction(novaTransacao)
+
     elementForm.reset();
 
 })

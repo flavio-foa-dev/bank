@@ -8,7 +8,7 @@ elementForm.addEventListener("submit", (event) => {
     }
     const inputTipoTransacao = (elementForm.querySelector("#tipoTransacao").value);
     const inputValor = +elementForm.querySelector("#valor").value;
-    const inputData = new Date(elementForm.querySelector("#data").value);
+    const inputData = new Date(elementForm.querySelector("#data").value + " 00:00:00");
     const novaTransacao = {
         type: inputTipoTransacao,
         value: inputValor,

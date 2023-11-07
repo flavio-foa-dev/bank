@@ -30,6 +30,7 @@ export default class Account {
         }
         else if (transaction.type == TypeOpetation.TRANSFERENCIA || transaction.type == TypeOpetation.PAGAMENTO_BOLETO) {
             this.debitAccount(transaction.value);
+            transaction.value *= -1;
         }
         else {
             throw new Error("Tipo de Transação é inválido!");

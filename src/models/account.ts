@@ -23,6 +23,7 @@ export default class Account {
   private depositAccount(value: number): void {
     this.balance += value
     localStorage.setItem("balance", this.balance.toString())
+
   }
 
   private debitAccount(value: number): void {
@@ -37,8 +38,11 @@ export default class Account {
   createTransaction(transaction: TrasectionType): void {
     if (transaction.type == TypeOpetation.DEPOSITO) {
       this.depositAccount(transaction.value)
+
     } else if (transaction.type == TypeOpetation.TRANSFERENCIA|| transaction.type == TypeOpetation.PAGAMENTO_BOLETO) {
       this.debitAccount(transaction.value)
+      transaction.value *= -1
+
     } else {
       throw new Error("Tipo de Transação é inválido!");
     }

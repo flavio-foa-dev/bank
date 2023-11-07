@@ -14,8 +14,8 @@ export const showBalance = () => {
 };
 showBalance();
 export const saveTransaction = async (transaction) => {
-    console.log(transaction);
     account.createTransaction(transaction);
     account.listGroupTransactions();
     showBalance();
+    location.reload();
 };
