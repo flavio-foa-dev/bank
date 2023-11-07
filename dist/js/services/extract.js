@@ -1,4 +1,4 @@
-import Account from "../models/account";
+import Account from "../models/account.js";
 const elementExtract = document.querySelector(".extrato .registro-transacoes");
 const account = new Account();
 const renderExtract = () => {

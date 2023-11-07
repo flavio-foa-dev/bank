@@ -1,5 +1,5 @@
-import Account from "../models/account"
-import { GroupTransaction } from "../types/GroupTransaction"
+import Account from "../models/account.js"
+import { GroupTransaction } from "../types/GroupTransaction.js"
 
 const elementExtract: HTMLElement = document.querySelector(".extrato .registro-transacoes")
 const account = new Account()
